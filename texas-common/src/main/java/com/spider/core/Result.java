@@ -3,20 +3,15 @@ package com.spider.core;
 import java.io.Serializable;
 
 /**
- * AJAX 统一 返回标准
- * Created by LZQ on 2016/10/12.
+ * @ClassName: Result
+ * @author: SuperZemo
+ * @email: chenzeming@fanqie.com
+ * @Date 22/05/2017 19:33
+ * @Description 统一返回结果
  */
 public class Result implements Serializable {
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
 
-    /**
-     * 列表数量
-     */
-    private Integer count;
-    
+    private static final long serialVersionUID = -2742391645138232450L;
     /**
      * 结果状态码
      */
@@ -37,20 +32,36 @@ public class Result implements Serializable {
      */
     protected String message;
 
+    private transient String dateFormat = "yyyy-MM-dd HH:mm:ss";
+
+    private transient boolean enableDateFormat =false;
+
     public Result() {
 
     }
 
-    public Result(ResultCode resultCode) {
+    public Result(ResultCodeEnum resultCode) {
         this.status = resultCode.getStatus();
         this.message = resultCode.getMessage();
         this.success = true;
     }
 
-    public Result(ResultCode resultCode, boolean isSuccess) {
+    public Result(ResultCodeEnum resultCode, Object data) {
         this.status = resultCode.getStatus();
         this.message = resultCode.getMessage();
-        this.success = isSuccess;
+        this.data = data;
+    }
+
+    /**
+     * 附加返回错误信息
+     *
+     * @param resultCode
+     * @param extraRrrorMsg
+     */
+    public Result(ResultCodeEnum resultCode, String extraRrrorMsg) {
+        this.status = resultCode.getStatus();
+        this.message = resultCode.getMessage() + ":" + (null != extraRrrorMsg ? extraRrrorMsg : "");
+        this.success = false;
     }
 
     public String getStatus() {
@@ -84,13 +95,19 @@ public class Result implements Serializable {
     public void setSuccess(boolean isSuccess) {
         this.success = isSuccess;
     }
+    public String getDateFormat() {
+        return dateFormat;
+    }
 
-	public Integer getCount() {
-		return count;
-	}
+    public void setDateFormat(String dateFormat) {
+        this.dateFormat = dateFormat;
+    }
 
-	public void setCount(Integer count) {
-		this.count = count;
-	}
-    
+    public boolean isEnableDateFormat() {
+        return enableDateFormat;
+    }
+
+    public void setEnableDateFormat(boolean enableDateFormat) {
+        this.enableDateFormat = enableDateFormat;
+    }
 }

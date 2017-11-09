@@ -1,4 +1,4 @@
-package com.spider.app;
+package com.spider;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
 
@@ -23,6 +24,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync(proxyTargetClass = true)
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @MapperScan("com.spider.dao")
+@ComponentScan
 public class TexasHoldemApplication extends SpringBootServletInitializer {
     private static Logger logger = LoggerFactory.getLogger(TexasHoldemApplication.class);
     public static void main(String[] args) {

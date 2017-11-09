@@ -2,6 +2,10 @@ package com.spider.texasinfo;
 
 import java.util.Date;
 
+/**
+ * @author lxx
+ * 用户牌局概要表
+ */
 public class SpiderUserPokerOutline {
     /**
      * 
