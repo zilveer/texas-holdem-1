@@ -1,0 +1,14 @@
+spring:
+      datasource:
+          url: jdbc:mysql://192.168.20.63:3306/falcon
+          username: root
+          password: fanqie@fangbaba
+          driver-class: com.mysql.jdbc.Driver
+          validation-query: SELECT 1
+      jpa:
+         show-sql: true
+mybatis:
+  mapper-locations: classpath:mapper/*Map.xml,classpath:mapper/*Mapper.xml
+mongodb:
+  hosts: 10.10.240.216:27017
+  #hosts: 192.168.20.61:57017

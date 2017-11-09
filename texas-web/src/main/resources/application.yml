@@ -1,0 +1,18 @@
+server:
+    port: 8082
+    tomcat:
+        basedir: /data/
+        accesslog:
+            enabled: true
+mybatis:
+#  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mapper/*Map.xml,classpath:mapper/*Mapper.xml
+
+endpoints:
+   shutdown:
+      enabled: true
+
+info:
+  name: texas
+  description: 初始项目
+  version: 1.0.0

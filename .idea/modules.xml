@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/texas-common/original-common.iml" filepath="$PROJECT_DIR$/texas-common/original-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-dao/original-dao.iml" filepath="$PROJECT_DIR$/texas-dao/original-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-model/original-model.iml" filepath="$PROJECT_DIR$/texas-model/original-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-rpc/original-rpc.iml" filepath="$PROJECT_DIR$/texas-rpc/original-rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-service/original-service.iml" filepath="$PROJECT_DIR$/texas-service/original-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-web/original-web.iml" filepath="$PROJECT_DIR$/texas-web/original-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas.iml" filepath="$PROJECT_DIR$/texas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-common/texas-common.iml" filepath="$PROJECT_DIR$/texas-common/texas-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-dao/texas-dao.iml" filepath="$PROJECT_DIR$/texas-dao/texas-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-holdem.iml" filepath="$PROJECT_DIR$/texas-holdem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-model/texas-model.iml" filepath="$PROJECT_DIR$/texas-model/texas-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-rpc/texas-rpc.iml" filepath="$PROJECT_DIR$/texas-rpc/texas-rpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-service/texas-service.iml" filepath="$PROJECT_DIR$/texas-service/texas-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/texas-web/texas-web.iml" filepath="$PROJECT_DIR$/texas-web/texas-web.iml" />
+    </modules>
+  </component>
+</project>

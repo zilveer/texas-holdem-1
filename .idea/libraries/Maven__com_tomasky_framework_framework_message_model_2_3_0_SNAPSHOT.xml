@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.tomasky.framework:framework-message-model:2.3.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/tomasky/framework/framework-message-model/2.3.0-SNAPSHOT/framework-message-model-2.3.0-20170627.091755-6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/com/tomasky/framework/framework-message-model/2.3.0-SNAPSHOT/framework-message-model-2.3.0-20170627.091755-6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/tomasky/framework/framework-message-model/2.3.0-SNAPSHOT/framework-message-model-2.3.0-20170627.091755-6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

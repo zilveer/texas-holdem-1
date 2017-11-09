@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="texas@106.14.213.39">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="texas">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="spider"/>
+    <schema id="7" parent="1" name="test"/>
+    <table id="8" parent="2" name="spider_poker_info">
+      <Comment>牌局信息表</Comment>
+    </table>
+    <table id="9" parent="2" name="spider_user_action_info">
+      <Comment>记录用户每一步的操作过程</Comment>
+    </table>
+    <table id="10" parent="2" name="spider_user_poker_outline">
+      <Comment>用户牌局概要表</Comment>
+    </table>
+    <column id="11" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="12" parent="8" name="game_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="13" parent="8" name="game_type">
+      <Position>3</Position>
+      <Comment>MTT
+            SNG
+            CASH</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="14" parent="8" name="big_blind">
+      <Position>4</Position>
+      <Comment>大盲注 BB</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="15" parent="8" name="small_blind">
+      <Position>5</Position>
+      <Comment>小盲注 sb</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="16" parent="8" name="monetary_unit">
+      <Position>6</Position>
+      <Comment>USD RMB</Comment>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="17" parent="8" name="game_time">
+      <Position>7</Position>
+      <Comment>牌局时间</Comment>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="18" parent="8" name="now_man">
+      <Position>8</Position>
+      <Comment>当前参与人数</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="19" parent="8" name="max_man">
+      <Position>9</Position>
+      <Comment>最大参与人数</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="20" parent="8" name="pot">
+      <Position>10</Position>
+      <Comment>最终底池</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="21" parent="8" name="blind_level">
+      <Position>11</Position>
+      <Comment>盲注等级</Comment>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="22" parent="8" name="buying">
+      <Position>12</Position>
+      <Comment>买入费用</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="23" parent="8" name="flop">
+      <Position>13</Position>
+      <Comment>翻牌内容</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="24" parent="8" name="turn">
+      <Position>14</Position>
+      <Comment>转牌内容</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="25" parent="8" name="river">
+      <Position>15</Position>
+      <Comment>河牌内容</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="26" parent="8" name="over_street">
+      <Position>16</Position>
+      <Comment>最终结束在哪一条街</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="27" parent="8" name="win_card">
+      <Position>17</Position>
+      <Comment>最终赢牌 牌面</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="28" parent="8" name="win_card_type">
+      <Position>18</Position>
+      <Comment>赢牌类型 -A-high 3条 葫芦</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="29" parent="8" name="win_card_user">
+      <Position>19</Position>
+      <Comment>赢牌玩家id</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="30" parent="8" name="remark">
+      <Position>20</Position>
+      <DataType>varchar(1024)|0</DataType>
+    </column>
+    <column id="31" parent="8" name="remark_json">
+      <Position>21</Position>
+      <DataType>varchar(1024)|0</DataType>
+    </column>
+    <column id="32" parent="8" name="rake">
+      <Position>22</Position>
+      <Comment>抽成</Comment>
+      <DataType>float(8,2)|0</DataType>
+    </column>
+    <column id="33" parent="8" name="company">
+      <Position>23</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="34" parent="8" name="create_at">
+      <Position>24</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="35" parent="8" name="update_at">
+      <Position>25</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="36" parent="8" name="create_user">
+      <Position>26</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="37" parent="8" name="update_user">
+      <Position>27</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <key id="38" parent="8" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="39" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="40" parent="9" name="game_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="9" name="step">
+      <Position>3</Position>
+      <Comment>pre-flop flop  turn river</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="42" parent="9" name="bet_amounts">
+      <Position>4</Position>
+      <Comment>下注总量</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="43" parent="9" name="raise_amounts">
+      <Position>5</Position>
+      <Comment>加注总量</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="44" parent="9" name="user_action">
+      <Position>6</Position>
+      <Comment>bet call raise allin</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="45" parent="9" name="user_site">
+      <Position>7</Position>
+      <Comment>B&amp;S,BTN,SB,BB,MP,EP,CO</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="46" parent="9" name="create_at">
+      <Position>8</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="47" parent="9" name="create_user">
+      <Position>9</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="48" parent="9" name="update_at">
+      <Position>10</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="49" parent="9" name="update_user">
+      <Position>11</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <key id="50" parent="9" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="52" parent="10" name="game_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="53" parent="10" name="user_id">
+      <Position>3</Position>
+      <Comment>用户编号</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="54" parent="10" name="earnings">
+      <Position>4</Position>
+      <Comment>收益 有+ -</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="55" parent="10" name="user_site">
+      <Position>5</Position>
+      <Comment>B&amp;S,BTN,SB,BB,MP,EP,CO</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="56" parent="10" name="user_hand">
+      <Position>6</Position>
+      <Comment>用户手牌</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="57" parent="10" name="hand_type">
+      <Position>7</Position>
+      <Comment>口袋对 高张 连牌</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="58" parent="10" name="suited">
+      <Position>8</Position>
+      <Comment>1-是 0-非</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="59" parent="10" name="allin">
+      <Position>9</Position>
+      <Comment>1 allin  0- off allin</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="60" parent="10" name="create_at">
+      <Position>10</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="61" parent="10" name="update_at">
+      <Position>11</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="62" parent="10" name="create_user">
+      <Position>12</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="63" parent="10" name="update_user">
+      <Position>13</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <key id="64" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spider.dao.SpiderUserPokerOutlineMapper" >
+  <resultMap id="BaseResultMap" type="com.spider.texasinfo.SpiderUserPokerOutline" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="game_id" property="gameId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="earnings" property="earnings" jdbcType="DECIMAL" />
+    <result column="user_site" property="userSite" jdbcType="VARCHAR" />
+    <result column="user_hand" property="userHand" jdbcType="VARCHAR" />
+    <result column="hand_type" property="handType" jdbcType="VARCHAR" />
+    <result column="suited" property="suited" jdbcType="INTEGER" />
+    <result column="allin" property="allin" jdbcType="INTEGER" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, game_id, user_id, earnings, user_site, user_hand, hand_type, suited, allin, create_at, 
+    update_at, create_user, update_user
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.spider.texasinfo.SpiderUserPokerOutlineExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spider_user_poker_outline
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from spider_user_poker_outline
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from spider_user_poker_outline
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spider.texasinfo.SpiderUserPokerOutlineExample" >
+    delete from spider_user_poker_outline
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.spider.texasinfo.SpiderUserPokerOutline" >
+    insert into spider_user_poker_outline (id, game_id, user_id, 
+      earnings, user_site, user_hand, 
+      hand_type, suited, allin, 
+      create_at, update_at, create_user, 
+      update_user)
+    values (#{id,jdbcType=INTEGER}, #{gameId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
+      #{earnings,jdbcType=DECIMAL}, #{userSite,jdbcType=VARCHAR}, #{userHand,jdbcType=VARCHAR}, 
+      #{handType,jdbcType=VARCHAR}, #{suited,jdbcType=INTEGER}, #{allin,jdbcType=INTEGER}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{updateUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.spider.texasinfo.SpiderUserPokerOutline" >
+    insert into spider_user_poker_outline
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gameId != null" >
+        game_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="earnings != null" >
+        earnings,
+      </if>
+      <if test="userSite != null" >
+        user_site,
+      </if>
+      <if test="userHand != null" >
+        user_hand,
+      </if>
+      <if test="handType != null" >
+        hand_type,
+      </if>
+      <if test="suited != null" >
+        suited,
+      </if>
+      <if test="allin != null" >
+        allin,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gameId != null" >
+        #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="earnings != null" >
+        #{earnings,jdbcType=DECIMAL},
+      </if>
+      <if test="userSite != null" >
+        #{userSite,jdbcType=VARCHAR},
+      </if>
+      <if test="userHand != null" >
+        #{userHand,jdbcType=VARCHAR},
+      </if>
+      <if test="handType != null" >
+        #{handType,jdbcType=VARCHAR},
+      </if>
+      <if test="suited != null" >
+        #{suited,jdbcType=INTEGER},
+      </if>
+      <if test="allin != null" >
+        #{allin,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spider.texasinfo.SpiderUserPokerOutlineExample" resultType="java.lang.Integer" >
+    select count(*) from spider_user_poker_outline
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update spider_user_poker_outline
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.gameId != null" >
+        game_id = #{record.gameId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.earnings != null" >
+        earnings = #{record.earnings,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userSite != null" >
+        user_site = #{record.userSite,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userHand != null" >
+        user_hand = #{record.userHand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handType != null" >
+        hand_type = #{record.handType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.suited != null" >
+        suited = #{record.suited,jdbcType=INTEGER},
+      </if>
+      <if test="record.allin != null" >
+        allin = #{record.allin,jdbcType=INTEGER},
+      </if>
+      <if test="record.createAt != null" >
+        create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateAt != null" >
+        update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null" >
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateUser != null" >
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update spider_user_poker_outline
+    set id = #{record.id,jdbcType=INTEGER},
+      game_id = #{record.gameId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      earnings = #{record.earnings,jdbcType=DECIMAL},
+      user_site = #{record.userSite,jdbcType=VARCHAR},
+      user_hand = #{record.userHand,jdbcType=VARCHAR},
+      hand_type = #{record.handType,jdbcType=VARCHAR},
+      suited = #{record.suited,jdbcType=INTEGER},
+      allin = #{record.allin,jdbcType=INTEGER},
+      create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_user = #{record.updateUser,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spider.texasinfo.SpiderUserPokerOutline" >
+    update spider_user_poker_outline
+    <set >
+      <if test="gameId != null" >
+        game_id = #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="earnings != null" >
+        earnings = #{earnings,jdbcType=DECIMAL},
+      </if>
+      <if test="userSite != null" >
+        user_site = #{userSite,jdbcType=VARCHAR},
+      </if>
+      <if test="userHand != null" >
+        user_hand = #{userHand,jdbcType=VARCHAR},
+      </if>
+      <if test="handType != null" >
+        hand_type = #{handType,jdbcType=VARCHAR},
+      </if>
+      <if test="suited != null" >
+        suited = #{suited,jdbcType=INTEGER},
+      </if>
+      <if test="allin != null" >
+        allin = #{allin,jdbcType=INTEGER},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spider.texasinfo.SpiderUserPokerOutline" >
+    update spider_user_poker_outline
+    set game_id = #{gameId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR},
+      earnings = #{earnings,jdbcType=DECIMAL},
+      user_site = #{userSite,jdbcType=VARCHAR},
+      user_hand = #{userHand,jdbcType=VARCHAR},
+      hand_type = #{handType,jdbcType=VARCHAR},
+      suited = #{suited,jdbcType=INTEGER},
+      allin = #{allin,jdbcType=INTEGER},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

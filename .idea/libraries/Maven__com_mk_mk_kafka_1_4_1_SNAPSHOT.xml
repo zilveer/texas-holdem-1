@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.mk:mk-kafka:1.4.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/mk/mk-kafka/1.4.1-SNAPSHOT/mk-kafka-1.4.1-20170425.065715-4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/com/mk/mk-kafka/1.4.1-SNAPSHOT/mk-kafka-1.4.1-20170425.065715-4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/mk/mk-kafka/1.4.1-SNAPSHOT/mk-kafka-1.4.1-20170425.065715-4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

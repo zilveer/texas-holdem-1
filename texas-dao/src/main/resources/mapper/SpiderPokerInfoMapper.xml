@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spider.dao.SpiderPokerInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.spider.texasinfo.SpiderPokerInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="game_id" property="gameId" jdbcType="INTEGER" />
+    <result column="game_type" property="gameType" jdbcType="VARCHAR" />
+    <result column="big_blind" property="bigBlind" jdbcType="DECIMAL" />
+    <result column="small_blind" property="smallBlind" jdbcType="DECIMAL" />
+    <result column="monetary_unit" property="monetaryUnit" jdbcType="VARCHAR" />
+    <result column="game_time" property="gameTime" jdbcType="TIMESTAMP" />
+    <result column="now_man" property="nowMan" jdbcType="INTEGER" />
+    <result column="max_man" property="maxMan" jdbcType="INTEGER" />
+    <result column="pot" property="pot" jdbcType="DECIMAL" />
+    <result column="blind_level" property="blindLevel" jdbcType="VARCHAR" />
+    <result column="buying" property="buying" jdbcType="DECIMAL" />
+    <result column="flop" property="flop" jdbcType="VARCHAR" />
+    <result column="turn" property="turn" jdbcType="VARCHAR" />
+    <result column="river" property="river" jdbcType="VARCHAR" />
+    <result column="over_street" property="overStreet" jdbcType="VARCHAR" />
+    <result column="win_card" property="winCard" jdbcType="VARCHAR" />
+    <result column="win_card_type" property="winCardType" jdbcType="VARCHAR" />
+    <result column="win_card_user" property="winCardUser" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="remark_json" property="remarkJson" jdbcType="VARCHAR" />
+    <result column="rake" property="rake" jdbcType="REAL" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, game_id, game_type, big_blind, small_blind, monetary_unit, game_time, now_man, 
+    max_man, pot, blind_level, buying, flop, turn, river, over_street, win_card, win_card_type, 
+    win_card_user, remark, remark_json, rake, company, create_at, update_at, create_user, 
+    update_user
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.spider.texasinfo.SpiderPokerInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spider_poker_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from spider_poker_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from spider_poker_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spider.texasinfo.SpiderPokerInfoExample" >
+    delete from spider_poker_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.spider.texasinfo.SpiderPokerInfo" >
+    insert into spider_poker_info (id, game_id, game_type, 
+      big_blind, small_blind, monetary_unit, 
+      game_time, now_man, max_man, 
+      pot, blind_level, buying, 
+      flop, turn, river, 
+      over_street, win_card, win_card_type, 
+      win_card_user, remark, remark_json, 
+      rake, company, create_at, 
+      update_at, create_user, update_user
+      )
+    values (#{id,jdbcType=INTEGER}, #{gameId,jdbcType=INTEGER}, #{gameType,jdbcType=VARCHAR}, 
+      #{bigBlind,jdbcType=DECIMAL}, #{smallBlind,jdbcType=DECIMAL}, #{monetaryUnit,jdbcType=VARCHAR}, 
+      #{gameTime,jdbcType=TIMESTAMP}, #{nowMan,jdbcType=INTEGER}, #{maxMan,jdbcType=INTEGER}, 
+      #{pot,jdbcType=DECIMAL}, #{blindLevel,jdbcType=VARCHAR}, #{buying,jdbcType=DECIMAL}, 
+      #{flop,jdbcType=VARCHAR}, #{turn,jdbcType=VARCHAR}, #{river,jdbcType=VARCHAR}, 
+      #{overStreet,jdbcType=VARCHAR}, #{winCard,jdbcType=VARCHAR}, #{winCardType,jdbcType=VARCHAR}, 
+      #{winCardUser,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{remarkJson,jdbcType=VARCHAR}, 
+      #{rake,jdbcType=REAL}, #{company,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{updateUser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.spider.texasinfo.SpiderPokerInfo" >
+    insert into spider_poker_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="gameId != null" >
+        game_id,
+      </if>
+      <if test="gameType != null" >
+        game_type,
+      </if>
+      <if test="bigBlind != null" >
+        big_blind,
+      </if>
+      <if test="smallBlind != null" >
+        small_blind,
+      </if>
+      <if test="monetaryUnit != null" >
+        monetary_unit,
+      </if>
+      <if test="gameTime != null" >
+        game_time,
+      </if>
+      <if test="nowMan != null" >
+        now_man,
+      </if>
+      <if test="maxMan != null" >
+        max_man,
+      </if>
+      <if test="pot != null" >
+        pot,
+      </if>
+      <if test="blindLevel != null" >
+        blind_level,
+      </if>
+      <if test="buying != null" >
+        buying,
+      </if>
+      <if test="flop != null" >
+        flop,
+      </if>
+      <if test="turn != null" >
+        turn,
+      </if>
+      <if test="river != null" >
+        river,
+      </if>
+      <if test="overStreet != null" >
+        over_street,
+      </if>
+      <if test="winCard != null" >
+        win_card,
+      </if>
+      <if test="winCardType != null" >
+        win_card_type,
+      </if>
+      <if test="winCardUser != null" >
+        win_card_user,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="remarkJson != null" >
+        remark_json,
+      </if>
+      <if test="rake != null" >
+        rake,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gameId != null" >
+        #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="gameType != null" >
+        #{gameType,jdbcType=VARCHAR},
+      </if>
+      <if test="bigBlind != null" >
+        #{bigBlind,jdbcType=DECIMAL},
+      </if>
+      <if test="smallBlind != null" >
+        #{smallBlind,jdbcType=DECIMAL},
+      </if>
+      <if test="monetaryUnit != null" >
+        #{monetaryUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="gameTime != null" >
+        #{gameTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nowMan != null" >
+        #{nowMan,jdbcType=INTEGER},
+      </if>
+      <if test="maxMan != null" >
+        #{maxMan,jdbcType=INTEGER},
+      </if>
+      <if test="pot != null" >
+        #{pot,jdbcType=DECIMAL},
+      </if>
+      <if test="blindLevel != null" >
+        #{blindLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="buying != null" >
+        #{buying,jdbcType=DECIMAL},
+      </if>
+      <if test="flop != null" >
+        #{flop,jdbcType=VARCHAR},
+      </if>
+      <if test="turn != null" >
+        #{turn,jdbcType=VARCHAR},
+      </if>
+      <if test="river != null" >
+        #{river,jdbcType=VARCHAR},
+      </if>
+      <if test="overStreet != null" >
+        #{overStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="winCard != null" >
+        #{winCard,jdbcType=VARCHAR},
+      </if>
+      <if test="winCardType != null" >
+        #{winCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="winCardUser != null" >
+        #{winCardUser,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkJson != null" >
+        #{remarkJson,jdbcType=VARCHAR},
+      </if>
+      <if test="rake != null" >
+        #{rake,jdbcType=REAL},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spider.texasinfo.SpiderPokerInfoExample" resultType="java.lang.Integer" >
+    select count(*) from spider_poker_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update spider_poker_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.gameId != null" >
+        game_id = #{record.gameId,jdbcType=INTEGER},
+      </if>
+      <if test="record.gameType != null" >
+        game_type = #{record.gameType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bigBlind != null" >
+        big_blind = #{record.bigBlind,jdbcType=DECIMAL},
+      </if>
+      <if test="record.smallBlind != null" >
+        small_blind = #{record.smallBlind,jdbcType=DECIMAL},
+      </if>
+      <if test="record.monetaryUnit != null" >
+        monetary_unit = #{record.monetaryUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gameTime != null" >
+        game_time = #{record.gameTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.nowMan != null" >
+        now_man = #{record.nowMan,jdbcType=INTEGER},
+      </if>
+      <if test="record.maxMan != null" >
+        max_man = #{record.maxMan,jdbcType=INTEGER},
+      </if>
+      <if test="record.pot != null" >
+        pot = #{record.pot,jdbcType=DECIMAL},
+      </if>
+      <if test="record.blindLevel != null" >
+        blind_level = #{record.blindLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buying != null" >
+        buying = #{record.buying,jdbcType=DECIMAL},
+      </if>
+      <if test="record.flop != null" >
+        flop = #{record.flop,jdbcType=VARCHAR},
+      </if>
+      <if test="record.turn != null" >
+        turn = #{record.turn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.river != null" >
+        river = #{record.river,jdbcType=VARCHAR},
+      </if>
+      <if test="record.overStreet != null" >
+        over_street = #{record.overStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.winCard != null" >
+        win_card = #{record.winCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.winCardType != null" >
+        win_card_type = #{record.winCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.winCardUser != null" >
+        win_card_user = #{record.winCardUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarkJson != null" >
+        remark_json = #{record.remarkJson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rake != null" >
+        rake = #{record.rake,jdbcType=REAL},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createAt != null" >
+        create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateAt != null" >
+        update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null" >
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateUser != null" >
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update spider_poker_info
+    set id = #{record.id,jdbcType=INTEGER},
+      game_id = #{record.gameId,jdbcType=INTEGER},
+      game_type = #{record.gameType,jdbcType=VARCHAR},
+      big_blind = #{record.bigBlind,jdbcType=DECIMAL},
+      small_blind = #{record.smallBlind,jdbcType=DECIMAL},
+      monetary_unit = #{record.monetaryUnit,jdbcType=VARCHAR},
+      game_time = #{record.gameTime,jdbcType=TIMESTAMP},
+      now_man = #{record.nowMan,jdbcType=INTEGER},
+      max_man = #{record.maxMan,jdbcType=INTEGER},
+      pot = #{record.pot,jdbcType=DECIMAL},
+      blind_level = #{record.blindLevel,jdbcType=VARCHAR},
+      buying = #{record.buying,jdbcType=DECIMAL},
+      flop = #{record.flop,jdbcType=VARCHAR},
+      turn = #{record.turn,jdbcType=VARCHAR},
+      river = #{record.river,jdbcType=VARCHAR},
+      over_street = #{record.overStreet,jdbcType=VARCHAR},
+      win_card = #{record.winCard,jdbcType=VARCHAR},
+      win_card_type = #{record.winCardType,jdbcType=VARCHAR},
+      win_card_user = #{record.winCardUser,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      remark_json = #{record.remarkJson,jdbcType=VARCHAR},
+      rake = #{record.rake,jdbcType=REAL},
+      company = #{record.company,jdbcType=VARCHAR},
+      create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_user = #{record.updateUser,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spider.texasinfo.SpiderPokerInfo" >
+    update spider_poker_info
+    <set >
+      <if test="gameId != null" >
+        game_id = #{gameId,jdbcType=INTEGER},
+      </if>
+      <if test="gameType != null" >
+        game_type = #{gameType,jdbcType=VARCHAR},
+      </if>
+      <if test="bigBlind != null" >
+        big_blind = #{bigBlind,jdbcType=DECIMAL},
+      </if>
+      <if test="smallBlind != null" >
+        small_blind = #{smallBlind,jdbcType=DECIMAL},
+      </if>
+      <if test="monetaryUnit != null" >
+        monetary_unit = #{monetaryUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="gameTime != null" >
+        game_time = #{gameTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nowMan != null" >
+        now_man = #{nowMan,jdbcType=INTEGER},
+      </if>
+      <if test="maxMan != null" >
+        max_man = #{maxMan,jdbcType=INTEGER},
+      </if>
+      <if test="pot != null" >
+        pot = #{pot,jdbcType=DECIMAL},
+      </if>
+      <if test="blindLevel != null" >
+        blind_level = #{blindLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="buying != null" >
+        buying = #{buying,jdbcType=DECIMAL},
+      </if>
+      <if test="flop != null" >
+        flop = #{flop,jdbcType=VARCHAR},
+      </if>
+      <if test="turn != null" >
+        turn = #{turn,jdbcType=VARCHAR},
+      </if>
+      <if test="river != null" >
+        river = #{river,jdbcType=VARCHAR},
+      </if>
+      <if test="overStreet != null" >
+        over_street = #{overStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="winCard != null" >
+        win_card = #{winCard,jdbcType=VARCHAR},
+      </if>
+      <if test="winCardType != null" >
+        win_card_type = #{winCardType,jdbcType=VARCHAR},
+      </if>
+      <if test="winCardUser != null" >
+        win_card_user = #{winCardUser,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remarkJson != null" >
+        remark_json = #{remarkJson,jdbcType=VARCHAR},
+      </if>
+      <if test="rake != null" >
+        rake = #{rake,jdbcType=REAL},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spider.texasinfo.SpiderPokerInfo" >
+    update spider_poker_info
+    set game_id = #{gameId,jdbcType=INTEGER},
+      game_type = #{gameType,jdbcType=VARCHAR},
+      big_blind = #{bigBlind,jdbcType=DECIMAL},
+      small_blind = #{smallBlind,jdbcType=DECIMAL},
+      monetary_unit = #{monetaryUnit,jdbcType=VARCHAR},
+      game_time = #{gameTime,jdbcType=TIMESTAMP},
+      now_man = #{nowMan,jdbcType=INTEGER},
+      max_man = #{maxMan,jdbcType=INTEGER},
+      pot = #{pot,jdbcType=DECIMAL},
+      blind_level = #{blindLevel,jdbcType=VARCHAR},
+      buying = #{buying,jdbcType=DECIMAL},
+      flop = #{flop,jdbcType=VARCHAR},
+      turn = #{turn,jdbcType=VARCHAR},
+      river = #{river,jdbcType=VARCHAR},
+      over_street = #{overStreet,jdbcType=VARCHAR},
+      win_card = #{winCard,jdbcType=VARCHAR},
+      win_card_type = #{winCardType,jdbcType=VARCHAR},
+      win_card_user = #{winCardUser,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark_json = #{remarkJson,jdbcType=VARCHAR},
+      rake = #{rake,jdbcType=REAL},
+      company = #{company,jdbcType=VARCHAR},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,78 @@
+spring:
+   profiles: u_staging
+   data:
+      jpa:
+        repositories:
+            enabled: true
+   datasource:
+          url: jdbc:mysql://10.10.70.74:3306/falcon
+          username: falcon
+          password: kgLYLVH26hieU6+ez1D8kw==
+          driver-class: com.mysql.jdbc.Driver
+          max-active: 10
+          min-idle: 1
+          max-wait: 60000
+          remove-abandoned: true
+          test-on-borrow: true
+          remove-abandoned-timeout: 120
+          log-abandoned: true
+          time-between-eviction-runs-millis: 60000
+          validation-query: SELECT 1
+   jpa:
+     show-sql: true
+mongodb:
+  hosts: 10.10.70.74:27017
+
+#dubbo
+dubbo:
+  application.name: falcon
+  protocol.name:  dubbo
+  protocol.port:  20880
+zookeeper:
+  address:  10.10.70.74:2181
+  timeout:  60000
+  
+#kafka
+metadata:
+  broker.list: 10.10.249.158:9092
+#consumer
+zk:
+  connect:  10.10.70.74:2181
+  connectiontimeout.ms: 1000
+  sessiontimeout.ms: 10000
+auto:
+  offset.reset: smallest
+  commit.interval.ms: 1000
+socket:
+  receive.buffer.bytes: 1048576
+  request.max.bytes:  104857600
+  send.buffer.bytes: 1048576
+fetch:
+  message.max.bytes:  5242880
+
+#producer
+queue:
+  buffering.max.ms: 500
+  buffering.max.messages: 10000
+topic:
+  metadata.refresh.interval.ms: 3600000
+retry:
+  backoff.ms: 100
+message:
+  send.max.retries: 2
+send:
+  buffer.bytes: 5242880
+request:
+  required.acks:  1
+  
+#房态 
+roomstatus:
+  produce.day:  3
+  query.day:  3
+
+pms:
+  interface:
+       innUrl: http://pms.97kezhan.com/api/client/getBaseInfo/
+       
+wx:
+  web.msgUrl:  http://micro.fanqielaile.net/Hawkeye/hotelMsgDetail.html

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!--<dubbo:application name="${dubbo.application.name}"
+		owner="tomasky" organization="tomasky" />
+	<dubbo:registry protocol="zookeeper" address="${zookeeper.address}"
+		timeout="${zookeeper.timeout}" />
+	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" />
+	
+	<dubbo:service interface="com.spiderman.falcon.rpc.ICityRpcService" ref="cityRpcService" />
+	<dubbo:service interface="com.spiderman.falcon.rpc.IHotelOnPriceRpcService" ref="hotelOnPriceRpcService" />
+	<dubbo:service interface="com.spiderman.falcon.rpc.IUserHotelRpcService" ref="userHotelRpcService" />
+	<dubbo:service interface="com.spiderman.falcon.rpc.IUserInfoRpcService" ref="userInfoRpcService" />
+	<dubbo:service interface="com.spiderman.falcon.rpc.IHotelChangePriceSnapshotRpcService" ref="hotelChangePriceSnapshotRpcService" />
+	<dubbo:service interface="com.spiderman.falcon.rpc.IUserInfoRpcService" ref="userInfoRpcService" />
+	<dubbo:service interface="com.spiderman.falcon.rpc.IHotelInfoRpcService" ref="hotelInfoRpcService" />
+	<dubbo:service interface="com.spiderman.falcon.rpc.IUserSourceRpcService" ref="userSourceRpcService" />
+-->
+</beans>

@@ -1,0 +1,82 @@
+spring:
+   profiles: test
+   cache:
+      cache-names: templateList
+      guava:
+        spec: maximumSize=500,expireAfterAccess=600s
+   data:
+      jpa:
+        repositories:
+            enabled: true
+   datasource:
+          url: jdbc:mysql://192.168.20.63:3306/falcon
+          username: root
+          password: fanqie@fangbaba
+          driver-class: com.mysql.jdbc.Driver
+          validation-query: SELECT 1
+          max-active: 10
+          min-idle: 1
+          max-wait: 60000
+          remove-abandoned: true
+          test-on-borrow: true
+          remove-abandoned-timeout: 120
+          log-abandoned: true
+          time-between-eviction-runs-millis: 60000
+   jpa:
+     show-sql: true
+mongodb:
+  hosts: 192.168.20.61:57017
+
+#dubbo
+dubbo:
+  application.name: falcon
+  protocol.name:  dubbo
+  protocol.port:  20880
+zookeeper:
+  address:  192.168.20.61:2181
+  timeout:  60000
+
+#kafka
+metadata:
+  broker.list: 192.168.10.103:9092
+#consumer
+zk:
+  connect:  192.168.10.103:2181
+  connectiontimeout.ms: 1000
+  sessiontimeout.ms: 10000
+auto:
+  offset.reset: smallest
+  commit.interval.ms: 1000
+socket:
+  receive.buffer.bytes: 1048576
+  request.max.bytes:  104857600
+  send.buffer.bytes: 1048576
+fetch:
+  message.max.bytes:  5242880
+
+#producer
+queue:
+  buffering.max.ms: 500
+  buffering.max.messages: 10000
+topic:
+  metadata.refresh.interval.ms: 3600000
+retry:
+  backoff.ms: 100
+message:
+  send.max.retries: 2
+send:
+  buffer.bytes: 5242880
+request:
+  required.acks:  1
+
+#房态 
+roomstatus:
+  produce.day:  3
+  query.day:  3
+
+
+pms:
+  interface:
+       innUrl: http://pms.local.fanqiele.com/api/client/getBaseInfo/
+wx:
+  web.msgUrl:  http://micro.fanqielaile.net/Hawkeye/hotelMsgDetail.html

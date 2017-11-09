@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 自定义注释生成器  MybatisGeneratorCommon类为我自定义的继承CommentGenerator的类 -->
+        <commentGenerator type="com.ai.emall.util.MybatisGeneratorCommon">
+            <!--  关闭自动生成的注释  -->
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+        <!-- 定义如何连接目标数据库 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://106.14.213.39:3306/texas"
+                        userId="root" password="fanqie@fangbaba">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!-- 指定生成 Java 模型对象所属的包 -->
+        <javaModelGenerator targetPackage="com.spider.texasinfo" targetProject=".\texas-model\src\main\java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+            <property name="java" value=""
+        </javaModelGenerator>
+        <!-- 指定生成 SQL 映射文件所属的包和的目标项目 -->
+        <sqlMapGenerator targetPackage="com.spider.texasinfo"  targetProject=".\texas-model\src\main\java">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- 指定目标包和目标项目生成的客户端接口和类 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.spider.texasinfo"  targetProject=".\texas-model\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!-- 设置要生成的表名 -->
+        <table tableName="product" >
+            <!-- 指定自动生成主键的属性 -->
+            <generatedKey column="PRODUCT_ID" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+        <table tableName="product_picture" >
+            <!-- 指定自动生成主键的属性 -->
+            <generatedKey column="PIC_ID" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+        <table tableName="mall_product_module" >
+            <!-- 指定自动生成主键的属性 -->
+            <generatedKey column="PM_ID" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+        <table tableName="product_sku" >
+            <!-- 指定自动生成主键的属性 -->
+            <generatedKey column="SKU_ID" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+        <table tableName="sys_op" >
+            <!-- 指定自动生成主键的属性 -->
+            <generatedKey column="OP_ID" sqlStatement="MySql" identity="true"></generatedKey>
+        </table>
+
+
+    </context>
+</generatorConfiguration>

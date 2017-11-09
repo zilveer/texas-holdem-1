@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="texas-common" />
+        <module name="texas-dao" />
+        <module name="texas-holdem" />
+        <module name="texas-model" />
+        <module name="texas-rpc" />
+        <module name="texas-service" />
+        <module name="texas-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="texas" target="1.8" />
+      <module name="texas-common" target="1.8" />
+      <module name="texas-dao" target="1.8" />
+      <module name="texas-holdem" target="1.5" />
+      <module name="texas-model" target="1.8" />
+      <module name="texas-rpc" target="1.8" />
+      <module name="texas-service" target="1.8" />
+      <module name="texas-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
