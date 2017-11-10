@@ -1,38 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.spider.dao.SpiderUserActionInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.spider.texasinfo.SpiderUserActionInfo" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="game_id" property="gameId" jdbcType="INTEGER" />
-    <result column="step" property="step" jdbcType="VARCHAR" />
-    <result column="bet_amounts" property="betAmounts" jdbcType="DECIMAL" />
-    <result column="raise_amounts" property="raiseAmounts" jdbcType="DECIMAL" />
-    <result column="user_action" property="userAction" jdbcType="VARCHAR" />
-    <result column="user_site" property="userSite" jdbcType="VARCHAR" />
-    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
-    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
-    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
-    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.dao.SpiderUserActionInfoMapper">
+  <resultMap id="BaseResultMap" type="com.spider.texasinfo.SpiderUserActionInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="platform_game_id" jdbcType="VARCHAR" property="platformGameId" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="step" jdbcType="VARCHAR" property="step" />
+    <result column="bet_amounts" jdbcType="DECIMAL" property="betAmounts" />
+    <result column="raise_amounts" jdbcType="DECIMAL" property="raiseAmounts" />
+    <result column="user_action" jdbcType="VARCHAR" property="userAction" />
+    <result column="user_site" jdbcType="VARCHAR" property="userSite" />
+    <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -43,25 +44,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -72,41 +73,359 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
-    id, game_id, step, bet_amounts, raise_amounts, user_action, user_site, create_at, 
-    create_user, update_at, update_user
+  <sql id="Base_Column_List">
+    id, platform_game_id, platform, step, bet_amounts, raise_amounts, user_action, user_site, 
+    create_at, create_user, update_at, update_user
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample" >
+  <select id="selectByExample" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from spider_user_action_info
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from spider_user_action_info
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from spider_user_action_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample" >
+  <delete id="deleteByExample" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample">
     delete from spider_user_action_info
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.spider.texasinfo.SpiderUserActionInfo" >
+  <insert id="insert" parameterType="com.spider.texasinfo.SpiderUserActionInfo">
+    insert into spider_user_action_info (id, platform_game_id, platform, 
+      step, bet_amounts, raise_amounts, 
+      user_action, user_site, create_at, 
+      create_user, update_at, update_user
+      )
+    values (#{id,jdbcType=INTEGER}, #{platformGameId,jdbcType=VARCHAR}, #{platform,jdbcType=VARCHAR}, 
+      #{step,jdbcType=VARCHAR}, #{betAmounts,jdbcType=DECIMAL}, #{raiseAmounts,jdbcType=DECIMAL}, 
+      #{userAction,jdbcType=VARCHAR}, #{userSite,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{createUser,jdbcType=VARCHAR}, #{updateAt,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.spider.texasinfo.SpiderUserActionInfo">
+    insert into spider_user_action_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="platformGameId != null">
+        platform_game_id,
+      </if>
+      <if test="platform != null">
+        platform,
+      </if>
+      <if test="step != null">
+        step,
+      </if>
+      <if test="betAmounts != null">
+        bet_amounts,
+      </if>
+      <if test="raiseAmounts != null">
+        raise_amounts,
+      </if>
+      <if test="userAction != null">
+        user_action,
+      </if>
+      <if test="userSite != null">
+        user_site,
+      </if>
+      <if test="createAt != null">
+        create_at,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateAt != null">
+        update_at,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="platformGameId != null">
+        #{platformGameId,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=VARCHAR},
+      </if>
+      <if test="betAmounts != null">
+        #{betAmounts,jdbcType=DECIMAL},
+      </if>
+      <if test="raiseAmounts != null">
+        #{raiseAmounts,jdbcType=DECIMAL},
+      </if>
+      <if test="userAction != null">
+        #{userAction,jdbcType=VARCHAR},
+      </if>
+      <if test="userSite != null">
+        #{userSite,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateAt != null">
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample" resultType="java.lang.Integer">
+    select count(*) from spider_user_action_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update spider_user_action_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.platformGameId != null">
+        platform_game_id = #{record.platformGameId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.platform != null">
+        platform = #{record.platform,jdbcType=VARCHAR},
+      </if>
+      <if test="record.step != null">
+        step = #{record.step,jdbcType=VARCHAR},
+      </if>
+      <if test="record.betAmounts != null">
+        bet_amounts = #{record.betAmounts,jdbcType=DECIMAL},
+      </if>
+      <if test="record.raiseAmounts != null">
+        raise_amounts = #{record.raiseAmounts,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userAction != null">
+        user_action = #{record.userAction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userSite != null">
+        user_site = #{record.userSite,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createAt != null">
+        create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null">
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateAt != null">
+        update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null">
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update spider_user_action_info
+    set id = #{record.id,jdbcType=INTEGER},
+      platform_game_id = #{record.platformGameId,jdbcType=VARCHAR},
+      platform = #{record.platform,jdbcType=VARCHAR},
+      step = #{record.step,jdbcType=VARCHAR},
+      bet_amounts = #{record.betAmounts,jdbcType=DECIMAL},
+      raise_amounts = #{record.raiseAmounts,jdbcType=DECIMAL},
+      user_action = #{record.userAction,jdbcType=VARCHAR},
+      user_site = #{record.userSite,jdbcType=VARCHAR},
+      create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spider.texasinfo.SpiderUserActionInfo">
+    update spider_user_action_info
+    <set>
+      <if test="platformGameId != null">
+        platform_game_id = #{platformGameId,jdbcType=VARCHAR},
+      </if>
+      <if test="platform != null">
+        platform = #{platform,jdbcType=VARCHAR},
+      </if>
+      <if test="step != null">
+        step = #{step,jdbcType=VARCHAR},
+      </if>
+      <if test="betAmounts != null">
+        bet_amounts = #{betAmounts,jdbcType=DECIMAL},
+      </if>
+      <if test="raiseAmounts != null">
+        raise_amounts = #{raiseAmounts,jdbcType=DECIMAL},
+      </if>
+      <if test="userAction != null">
+        user_action = #{userAction,jdbcType=VARCHAR},
+      </if>
+      <if test="userSite != null">
+        user_site = #{userSite,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateAt != null">
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spider.texasinfo.SpiderUserActionInfo">
+    update spider_user_action_info
+    set platform_game_id = #{platformGameId,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR},
+      step = #{step,jdbcType=VARCHAR},
+      bet_amounts = #{betAmounts,jdbcType=DECIMAL},
+      raise_amounts = #{raiseAmounts,jdbcType=DECIMAL},
+      user_action = #{userAction,jdbcType=VARCHAR},
+      user_site = #{userSite,jdbcType=VARCHAR},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.spider.texasinfo.SpiderUserActionInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="game_id" jdbcType="INTEGER" property="gameId" />
+    <result column="step" jdbcType="VARCHAR" property="step" />
+    <result column="bet_amounts" jdbcType="DECIMAL" property="betAmounts" />
+    <result column="raise_amounts" jdbcType="DECIMAL" property="raiseAmounts" />
+    <result column="user_action" jdbcType="VARCHAR" property="userAction" />
+    <result column="user_site" jdbcType="VARCHAR" property="userSite" />
+    <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, game_id, step, bet_amounts, raise_amounts, user_action, user_site, create_at, 
+    create_user, update_at, update_user
+  </sql>
+  <select id="selectByExample" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spider_user_action_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from spider_user_action_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from spider_user_action_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample">
+    delete from spider_user_action_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.spider.texasinfo.SpiderUserActionInfo">
     insert into spider_user_action_info (id, game_id, step, 
       bet_amounts, raise_amounts, user_action, 
       user_site, create_at, create_user, 
@@ -116,127 +435,127 @@
       #{userSite,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
       #{updateAt,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.spider.texasinfo.SpiderUserActionInfo" >
+  <insert id="insertSelective" parameterType="com.spider.texasinfo.SpiderUserActionInfo">
     insert into spider_user_action_info
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="gameId != null" >
+      <if test="gameId != null">
         game_id,
       </if>
-      <if test="step != null" >
+      <if test="step != null">
         step,
       </if>
-      <if test="betAmounts != null" >
+      <if test="betAmounts != null">
         bet_amounts,
       </if>
-      <if test="raiseAmounts != null" >
+      <if test="raiseAmounts != null">
         raise_amounts,
       </if>
-      <if test="userAction != null" >
+      <if test="userAction != null">
         user_action,
       </if>
-      <if test="userSite != null" >
+      <if test="userSite != null">
         user_site,
       </if>
-      <if test="createAt != null" >
+      <if test="createAt != null">
         create_at,
       </if>
-      <if test="createUser != null" >
+      <if test="createUser != null">
         create_user,
       </if>
-      <if test="updateAt != null" >
+      <if test="updateAt != null">
         update_at,
       </if>
-      <if test="updateUser != null" >
+      <if test="updateUser != null">
         update_user,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="gameId != null" >
+      <if test="gameId != null">
         #{gameId,jdbcType=INTEGER},
       </if>
-      <if test="step != null" >
+      <if test="step != null">
         #{step,jdbcType=VARCHAR},
       </if>
-      <if test="betAmounts != null" >
+      <if test="betAmounts != null">
         #{betAmounts,jdbcType=DECIMAL},
       </if>
-      <if test="raiseAmounts != null" >
+      <if test="raiseAmounts != null">
         #{raiseAmounts,jdbcType=DECIMAL},
       </if>
-      <if test="userAction != null" >
+      <if test="userAction != null">
         #{userAction,jdbcType=VARCHAR},
       </if>
-      <if test="userSite != null" >
+      <if test="userSite != null">
         #{userSite,jdbcType=VARCHAR},
       </if>
-      <if test="createAt != null" >
+      <if test="createAt != null">
         #{createAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="createUser != null" >
+      <if test="createUser != null">
         #{createUser,jdbcType=VARCHAR},
       </if>
-      <if test="updateAt != null" >
+      <if test="updateAt != null">
         #{updateAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateUser != null" >
+      <if test="updateUser != null">
         #{updateUser,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.spider.texasinfo.SpiderUserActionInfoExample" resultType="java.lang.Integer">
     select count(*) from spider_user_action_info
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update spider_user_action_info
-    <set >
-      <if test="record.id != null" >
+    <set>
+      <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.gameId != null" >
+      <if test="record.gameId != null">
         game_id = #{record.gameId,jdbcType=INTEGER},
       </if>
-      <if test="record.step != null" >
+      <if test="record.step != null">
         step = #{record.step,jdbcType=VARCHAR},
       </if>
-      <if test="record.betAmounts != null" >
+      <if test="record.betAmounts != null">
         bet_amounts = #{record.betAmounts,jdbcType=DECIMAL},
       </if>
-      <if test="record.raiseAmounts != null" >
+      <if test="record.raiseAmounts != null">
         raise_amounts = #{record.raiseAmounts,jdbcType=DECIMAL},
       </if>
-      <if test="record.userAction != null" >
+      <if test="record.userAction != null">
         user_action = #{record.userAction,jdbcType=VARCHAR},
       </if>
-      <if test="record.userSite != null" >
+      <if test="record.userSite != null">
         user_site = #{record.userSite,jdbcType=VARCHAR},
       </if>
-      <if test="record.createAt != null" >
+      <if test="record.createAt != null">
         create_at = #{record.createAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.createUser != null" >
+      <if test="record.createUser != null">
         create_user = #{record.createUser,jdbcType=VARCHAR},
       </if>
-      <if test="record.updateAt != null" >
+      <if test="record.updateAt != null">
         update_at = #{record.updateAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.updateUser != null" >
+      <if test="record.updateUser != null">
         update_user = #{record.updateUser,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update spider_user_action_info
     set id = #{record.id,jdbcType=INTEGER},
       game_id = #{record.gameId,jdbcType=INTEGER},
@@ -249,47 +568,47 @@
       create_user = #{record.createUser,jdbcType=VARCHAR},
       update_at = #{record.updateAt,jdbcType=TIMESTAMP},
       update_user = #{record.updateUser,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.spider.texasinfo.SpiderUserActionInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.spider.texasinfo.SpiderUserActionInfo">
     update spider_user_action_info
-    <set >
-      <if test="gameId != null" >
+    <set>
+      <if test="gameId != null">
         game_id = #{gameId,jdbcType=INTEGER},
       </if>
-      <if test="step != null" >
+      <if test="step != null">
         step = #{step,jdbcType=VARCHAR},
       </if>
-      <if test="betAmounts != null" >
+      <if test="betAmounts != null">
         bet_amounts = #{betAmounts,jdbcType=DECIMAL},
       </if>
-      <if test="raiseAmounts != null" >
+      <if test="raiseAmounts != null">
         raise_amounts = #{raiseAmounts,jdbcType=DECIMAL},
       </if>
-      <if test="userAction != null" >
+      <if test="userAction != null">
         user_action = #{userAction,jdbcType=VARCHAR},
       </if>
-      <if test="userSite != null" >
+      <if test="userSite != null">
         user_site = #{userSite,jdbcType=VARCHAR},
       </if>
-      <if test="createAt != null" >
+      <if test="createAt != null">
         create_at = #{createAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="createUser != null" >
+      <if test="createUser != null">
         create_user = #{createUser,jdbcType=VARCHAR},
       </if>
-      <if test="updateAt != null" >
+      <if test="updateAt != null">
         update_at = #{updateAt,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateUser != null" >
+      <if test="updateUser != null">
         update_user = #{updateUser,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.spider.texasinfo.SpiderUserActionInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.spider.texasinfo.SpiderUserActionInfo">
     update spider_user_action_info
     set game_id = #{gameId,jdbcType=INTEGER},
       step = #{step,jdbcType=VARCHAR},

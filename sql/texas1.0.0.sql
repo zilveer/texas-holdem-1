@@ -6,7 +6,8 @@ drop table if exists spider_poker_info;
 create table spider_poker_info
 (
    id                   int not null auto_increment,
-   game_id              int,
+   platform_game_id     varchar(64) not null comment '平台游戏id',
+   platform             varchar(32) not null comment '平台',
    game_type            varchar(32) comment 'MTT
             SNG
             CASH',
@@ -29,7 +30,6 @@ create table spider_poker_info
    remark               varchar(1024),
    remark_json          varchar(1024),
    rake                 float(8,2) comment '抽成',
-   company              varchar(32),
    create_at            timestamp,
    update_at            timestamp,
    create_user          varchar(32),
@@ -47,7 +47,8 @@ drop table if exists spider_user_action_info;
 create table spider_user_action_info
 (
    id                   int not null auto_increment,
-   game_id              int,
+   platform_game_id     varchar(64) not null comment '平台游戏id',
+   platform             varchar(32) not null comment '平台',
    step                 varchar(64) comment 'pre-flop flop  turn river',
    bet_amounts          decimal comment '下注总量',
    raise_amounts        decimal comment '加注总量',
@@ -71,7 +72,8 @@ drop table if exists spider_user_poker_outline;
 create table spider_user_poker_outline
 (
    id                   int not null auto_increment,
-   game_id              int,
+   platform_game_id     varchar(64) not null comment '平台游戏id',
+   platform             varchar(32) not null comment '平台',
    user_id              varchar(32) comment '用户编号',
    earnings             decimal comment '收益 有+ -',
    user_site            varchar(32) comment 'B&S,BTN,SB,BB,MP,EP,CO',

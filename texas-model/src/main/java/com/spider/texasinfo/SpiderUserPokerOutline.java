@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * @author lxx
- * 用户牌局概要表
+ * 用户牌局基本概要
  */
 public class SpiderUserPokerOutline {
     /**
@@ -13,9 +13,14 @@ public class SpiderUserPokerOutline {
     private Integer id;
 
     /**
-     * 
+     * 平台游戏id
      */
-    private Integer gameId;
+    private String platformGameId;
+
+    /**
+     * 平台
+     */
+    private String platform;
 
     /**
      * 用户编号
@@ -89,19 +94,35 @@ public class SpiderUserPokerOutline {
     }
 
     /**
-     * 
-     * @return game_id 
+     * 平台游戏id
+     * @return platform_game_id 平台游戏id
      */
-    public Integer getGameId() {
-        return gameId;
+    public String getPlatformGameId() {
+        return platformGameId;
     }
 
     /**
-     * 
-     * @param gameId 
+     * 平台游戏id
+     * @param platformGameId 平台游戏id
      */
-    public void setGameId(Integer gameId) {
-        this.gameId = gameId;
+    public void setPlatformGameId(String platformGameId) {
+        this.platformGameId = platformGameId == null ? null : platformGameId.trim();
+    }
+
+    /**
+     * 平台
+     * @return platform 平台
+     */
+    public String getPlatform() {
+        return platform;
+    }
+
+    /**
+     * 平台
+     * @param platform 平台
+     */
+    public void setPlatform(String platform) {
+        this.platform = platform == null ? null : platform.trim();
     }
 
     /**

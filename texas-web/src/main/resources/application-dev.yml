@@ -1,0 +1,72 @@
+spring:
+   profiles: dev
+   cache:
+      cache-names: templateList
+      guava:
+        spec: maximumSize=500,expireAfterAccess=600s
+   data:
+      jpa:
+        repositories:
+            enabled: true
+   datasource:
+          url: jdbc:mysql://106.14.213.39:3306/texas
+          username: root
+          password: fanqie@fangbaba
+          driver-class: com.mysql.jdbc.Driver
+          validation-query: SELECT 1
+          max-active: 10
+          min-idle: 1
+          max-wait: 60000
+          remove-abandoned: true
+          test-on-borrow: true
+          remove-abandoned-timeout: 120
+          log-abandoned: true
+          time-between-eviction-runs-millis: 60000
+   jpa:
+     show-sql: true
+mongodb:
+  hosts: 106.14.213.39:27017
+
+#dubbo
+dubbo:
+  application.name: falcon
+  protocol.name:  dubbo
+  protocol.port:  20880
+zookeeper:
+  address:  106.14.213.39:2181
+  timeout:  60000
+
+#kafka
+metadata:
+  broker.list: 106.14.213.39:9092
+#consumer
+zk:
+  connect: 106.14.213.39:2181
+  connectiontimeout.ms: 1000
+  sessiontimeout.ms: 10000
+auto:
+  offset.reset: smallest
+  commit.interval.ms: 1000
+socket:
+  receive.buffer.bytes: 1048576
+  request.max.bytes:  104857600
+  send.buffer.bytes: 1048576
+fetch:
+  message.max.bytes:  5242880
+
+#producer
+queue:
+  buffering.max.ms: 500
+  buffering.max.messages: 10000
+topic:
+  metadata.refresh.interval.ms: 3600000
+retry:
+  backoff.ms: 100
+message:
+  send.max.retries: 2
+send:
+  buffer.bytes: 5242880
+request:
+  required.acks:  1
+
+

@@ -22,7 +22,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public SpiderUserActionInfoExample() {
         oredCriteria = new ArrayList<Criteria>();
@@ -30,7 +30,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
@@ -38,7 +38,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public String getOrderByClause() {
         return orderByClause;
@@ -46,7 +46,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public void setDistinct(boolean distinct) {
         this.distinct = distinct;
@@ -54,7 +54,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public boolean isDistinct() {
         return distinct;
@@ -62,7 +62,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public List<Criteria> getOredCriteria() {
         return oredCriteria;
@@ -70,7 +70,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public void or(Criteria criteria) {
         oredCriteria.add(criteria);
@@ -78,7 +78,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public Criteria or() {
         Criteria criteria = createCriteriaInternal();
@@ -88,7 +88,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public Criteria createCriteria() {
         Criteria criteria = createCriteriaInternal();
@@ -100,7 +100,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     protected Criteria createCriteriaInternal() {
         Criteria criteria = new Criteria();
@@ -109,7 +109,7 @@ public class SpiderUserActionInfoExample {
 
     /**
      *
-     * @mbggenerated 2017-11-09
+     * @mbggenerated 2017-11-10
      */
     public void clear() {
         oredCriteria.clear();
@@ -118,7 +118,7 @@ public class SpiderUserActionInfoExample {
     }
 
     /**
-     * spider_user_action_info 2017-11-09
+     * spider_user_action_info 2017-11-10
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -221,63 +221,143 @@ public class SpiderUserActionInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andGameIdIsNull() {
-            addCriterion("game_id is null");
+        public Criteria andPlatformGameIdIsNull() {
+            addCriterion("platform_game_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdIsNotNull() {
-            addCriterion("game_id is not null");
+        public Criteria andPlatformGameIdIsNotNull() {
+            addCriterion("platform_game_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdEqualTo(Integer value) {
-            addCriterion("game_id =", value, "gameId");
+        public Criteria andPlatformGameIdEqualTo(String value) {
+            addCriterion("platform_game_id =", value, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdNotEqualTo(Integer value) {
-            addCriterion("game_id <>", value, "gameId");
+        public Criteria andPlatformGameIdNotEqualTo(String value) {
+            addCriterion("platform_game_id <>", value, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdGreaterThan(Integer value) {
-            addCriterion("game_id >", value, "gameId");
+        public Criteria andPlatformGameIdGreaterThan(String value) {
+            addCriterion("platform_game_id >", value, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("game_id >=", value, "gameId");
+        public Criteria andPlatformGameIdGreaterThanOrEqualTo(String value) {
+            addCriterion("platform_game_id >=", value, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdLessThan(Integer value) {
-            addCriterion("game_id <", value, "gameId");
+        public Criteria andPlatformGameIdLessThan(String value) {
+            addCriterion("platform_game_id <", value, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdLessThanOrEqualTo(Integer value) {
-            addCriterion("game_id <=", value, "gameId");
+        public Criteria andPlatformGameIdLessThanOrEqualTo(String value) {
+            addCriterion("platform_game_id <=", value, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdIn(List<Integer> values) {
-            addCriterion("game_id in", values, "gameId");
+        public Criteria andPlatformGameIdLike(String value) {
+            addCriterion("platform_game_id like", value, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdNotIn(List<Integer> values) {
-            addCriterion("game_id not in", values, "gameId");
+        public Criteria andPlatformGameIdNotLike(String value) {
+            addCriterion("platform_game_id not like", value, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdBetween(Integer value1, Integer value2) {
-            addCriterion("game_id between", value1, value2, "gameId");
+        public Criteria andPlatformGameIdIn(List<String> values) {
+            addCriterion("platform_game_id in", values, "platformGameId");
             return (Criteria) this;
         }
 
-        public Criteria andGameIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("game_id not between", value1, value2, "gameId");
+        public Criteria andPlatformGameIdNotIn(List<String> values) {
+            addCriterion("platform_game_id not in", values, "platformGameId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformGameIdBetween(String value1, String value2) {
+            addCriterion("platform_game_id between", value1, value2, "platformGameId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformGameIdNotBetween(String value1, String value2) {
+            addCriterion("platform_game_id not between", value1, value2, "platformGameId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformIsNull() {
+            addCriterion("platform is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformIsNotNull() {
+            addCriterion("platform is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformEqualTo(String value) {
+            addCriterion("platform =", value, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformNotEqualTo(String value) {
+            addCriterion("platform <>", value, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformGreaterThan(String value) {
+            addCriterion("platform >", value, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformGreaterThanOrEqualTo(String value) {
+            addCriterion("platform >=", value, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformLessThan(String value) {
+            addCriterion("platform <", value, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformLessThanOrEqualTo(String value) {
+            addCriterion("platform <=", value, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformLike(String value) {
+            addCriterion("platform like", value, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformNotLike(String value) {
+            addCriterion("platform not like", value, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformIn(List<String> values) {
+            addCriterion("platform in", values, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformNotIn(List<String> values) {
+            addCriterion("platform not in", values, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformBetween(String value1, String value2) {
+            addCriterion("platform between", value1, value2, "platform");
+            return (Criteria) this;
+        }
+
+        public Criteria andPlatformNotBetween(String value1, String value2) {
+            addCriterion("platform not between", value1, value2, "platform");
             return (Criteria) this;
         }
 
@@ -883,7 +963,7 @@ public class SpiderUserActionInfoExample {
     }
 
     /**
-     * spider_user_action_info 2017-11-09
+     * spider_user_action_info 2017-11-10
      */
     public static class Criterion {
         private String condition;
